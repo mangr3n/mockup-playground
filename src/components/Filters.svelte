@@ -5,22 +5,14 @@
 
     $: classes = classnames(
         className,
-        'w-full',
-        'bg-red-300',
-        'relative',
-        'h-12',
-        'leading-12',
-        'top-0',
-        'right-0',
-        'left-0',
+        'navbar'
     );
 </script>
 <style>
     :global(.navbar) {
-        @apply w-full bg-red-300 absolute h-12 leading-12
+        @apply w-full bg-blue-100 absolute h-12 leading-10 top-0 right-0 left-0;
     }
 </style>
 
 <nav {...$$restProps} class={classes} >
-<slot/>
 </nav>

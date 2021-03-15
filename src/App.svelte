@@ -1,5 +1,5 @@
 <script>
-    import NavBar from './components/NavBar.svelte';
+    import Filters from './components/Filters.svelte';
 </script>
 
 <style>
@@ -8,4 +8,5 @@
     }
 </style>
 
-<NavBar><span>Okey Dokey</span>Test</NavBar>
+<Filters/>
+<img src="/Filters-2.png"/>
