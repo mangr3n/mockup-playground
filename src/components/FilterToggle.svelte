@@ -6,8 +6,8 @@
     }
 
 </script>
-<span on:click={toggleFilter} class:text-lightBlue-400={visible} class:text-white={!visible} class:bg-white={visible} class="mx-6 p-1 rounded-t my-2">
-    <svg xmlns="http://www.w3.org/2000/svg" class:text-lightBlue-400={visible} class:text-white={!visible} class:bg-white={visible} class="h-9 w-9 fill-current inline"
+<span on:click={toggleFilter} class:text-lightBlue-400={visible} class:text-white={!visible} class:bg-white={visible} class="mx-6 p-1 rounded-t my-2 select-none font-semibold">
+    <svg xmlns="http://www.w3.org/2000/svg" class:text-lightBlue-400={visible} class:text-white={!visible} class="h-9 w-9 fill-current inline"
         viewBox="0 0 612 584.83"
     >
         <path d="M335.92,169.75a49,49,0,0,1,5.48-22.55H127a22.61,22.61,0,0,0-22.54,22.55h0A22.6,22.6,0,0,0,127,192.29H341.4A49,49,0,0,1,335.92,169.75Z"/>

@@ -7,4 +7,4 @@ export let crumb = null;
   }
 </style>
 
-<span title={crumb.title}>{crumb.label}</span>
+<span class="select-none" title={crumb.title}>{crumb.label}</span>
