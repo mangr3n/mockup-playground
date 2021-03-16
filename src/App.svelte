@@ -1,10 +1,5 @@
 <script>
     import Filters from './components/Filters.svelte';
-    import {onMount} from 'svelte';
-
-    onMount (() =>{
-        document.body.style.paddingTop ='48px';
-    })
 </script>
 
 <style>
