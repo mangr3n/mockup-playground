@@ -15,7 +15,7 @@
 </script>
 <style>
     :global(.navbar) {
-        @apply w-full bg-lightBlue-900 absolute flex flex-row justify-between items-center h-12 leading-10 top-0 right-0 left-0;
+        @apply w-full bg-lightBlue-900 absolute flex flex-row items-center h-12 leading-10 top-0 right-0 left-0;
     }
 </style>
 
