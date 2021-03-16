@@ -1,9 +1,7 @@
 <script>
 import FilterCrumb from './FilterCrumb.svelte'
 export let crumbs = [
-  { label: "All Channels", title: "Channel" },
-  { label: "All Subchannels", title: "SubChannel"},
-  { label: "All Plans", title: "Plans" }
+  
 ];
 </script>
 <style>
