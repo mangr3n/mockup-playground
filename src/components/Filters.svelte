@@ -6,9 +6,9 @@
     let className = '';
     let visible = false;
     let crumbs = [
-        { label: "All Channels", title: "Channel" },
-        { label: "All Subchannels", title: "SubChannel"},
-        { label: "All Plans", title: "Plans" }
+        { label: "All Channels", title: "Select a Channel to filter Channels", default: true },
+        { label: "All Subchannels", title: "Select a Subchannel to filter Channels", default: true},
+        { label: "All Plans", title: "Select one or more Plans to filter Plans", default: true }
     ];
     export { className as class };
 
@@ -20,7 +20,7 @@
 </script>
 <style>
     :global(.navbar) {
-        @apply w-full bg-lightBlue-900 absolute flex flex-row items-center h-12 leading-10 top-0 right-0 left-0;
+        @apply w-full bg-lightBlue-900 fixed absolute flex flex-row items-center h-12 leading-10 top-0 right-0 left-0;
     }
 </style>
 
