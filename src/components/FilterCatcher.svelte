@@ -17,7 +17,7 @@ import FilterTag from './FilterTag.svelte'
   }
 </script>
 
-<div class="w-1/6 border-r-2 border-black p-4">
+<div class="w-1/6 border-r-2 border-coolGray-500 p-4">
   <div class="flex flex-row flex-wrap">
     {#each crumbs as crumb }
     <FilterTag {crumb} on:removeCrumb={removeCrumb}/>

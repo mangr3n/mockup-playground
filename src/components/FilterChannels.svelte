@@ -15,13 +15,13 @@ let filterDefinition = {
 
 <div
   class="w-1/6 inline-flex flex-col align-top justify-start content-start
-  border-r-2 border-black">
+  border-r-2 border-coolGray-500 select-none">
 
   <div class="w-3/4 place-self-center">
 
     <!-- Filter Title -->
-    <div class="grid justify-items-stretch mb-8 p-4 border-b-2 border-coolGray-200">
-      <div class="justify-self-center font-bold uppercase">
+    <div class="grid justify-items-stretch mb-8 mx-8 p-4 border-b-2 border-coolGray-200">
+      <div class="justify-self-center font-bold uppercase text-base">
         {filterDefinition.name}
       </div>
     </div>
@@ -29,10 +29,10 @@ let filterDefinition = {
 
 
     <!-- Filter Buttons Channel -->
-    <span class="p-4">
+    <div class="py-5">
 
       <!-- Sub Title (if needed) -->
-      <div class="mb-5">
+      <div class="mb-5 border-b-2 border-coolGray-200 px-3">
         <span class="font-bold"> Channel </span>
       </div>
 
@@ -44,7 +44,7 @@ let filterDefinition = {
         </label>
         {/if}
       {/each}
-    </span>
+      </div>
     <!-- Filter Buttons Channel -->
 
 
