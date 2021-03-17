@@ -16,24 +16,44 @@ let filterDefinition = {
 <div
   class="w-1/6 inline-flex flex-col align-top justify-start content-start
   border-r-2 border-black">
-  <div class="font-bold uppercase mb-2 p-4 border-b-2 border-black">
-    {filterDefinition.name}
+
+  <div class="w-3/4 place-self-center">
+
+    <!-- Filter Title -->
+    <div class="grid justify-items-stretch mb-8 p-4 border-b-2 border-coolGray-200">
+      <div class="justify-self-center font-bold uppercase">
+        {filterDefinition.name}
+      </div>
+    </div>
+    <!-- Filter Title -->
+
+
+    <!-- Filter Buttons Channel -->
+    <span class="p-4">
+
+      <!-- Sub Title (if needed) -->
+      <div class="mb-5">
+        <span class="font-bold"> Channel </span>
+      </div>
+
+      {#each filterDefinition.filters as filter}
+        {#if !filter.default}
+        <label class="container" title={filter.title}>{filter.name}
+          <input type="checkbox" />
+          <span class= "checkmark" />
+        </label>
+        {/if}
+      {/each}
+    </span>
+    <!-- Filter Buttons Channel -->
+
+
   </div>
-  <span class="p-4">
-    {#each filterDefinition.filters as filter}
-      {#if !filter.default}
-      <label class="container" title={filter.title}>{filter.name}
-        <input type="checkbox" />
-        <span class= "checkmark" />
-      </label>
-      {/if}
-    {/each}
-  </span>
 </div>
 
 <style>
   .container {
-    @apply block flex flex-col relative pl-8 mb-4 cursor-pointer text-base select-none items-center;
+    @apply block relative pl-8 mb-4 cursor-pointer text-base select-none items-center;
   }
 
   .container input {
