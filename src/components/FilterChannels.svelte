@@ -1,13 +1,38 @@
 <script>
+
+export let currentFilters = [];
+
+const toggleFilter = (filter) => {
+  if (currentFilters.includes(filter)) {
+    currentFilters = currentFilters.filter( item => {
+      return item !== filter;
+    });
+  } else {
+    currentFilters.push(filter);
+  }
+};
+
+$: console.log("CurrentFilters: ",currentFilters);
 let filterDefinition = {
   name: "Channels",
-  filters: [
-    { name: "All Channels", default: true, title: "Select a Channel to filter Channels", type: "Channel"},
-    { name: "Commercial", default: false, title: "Channel: Commercial", type: "Channel"},
-    { name: "Employer", default: false, title: "Channel: Employer", type: "Channel"},
-    { name: "Government", default: false, title: "Channel: Governement", type: "Channel"},
-    { name: "Medicare", default: false, title: "Channel: Medicare", type: "Channel"},
-    { name: "Medicaid", default: false, title: "Channel: State Medicaid", type: "Channel"}
+  sections: [
+    {
+      name: 'Channel',
+      filters: [
+        { name: "All Channels", default: true, title: "Select a Channel to filter Channels", type: "Channel"},
+        { name: "Commercial", default: false, title: "Channel: Commercial", type: "Channel"},
+        { name: "Employer", default: false, title: "Channel: Employer", type: "Channel"},
+        { name: "Government", default: false, title: "Channel: Governement", type: "Channel"},
+        { name: "Medicare", default: false, title: "Channel: Medicare", type: "Channel"},
+        { name: "Medicaid", default: false, title: "Channel: State Medicaid", type: "Channel"}
+      ]
+    },
+    {
+      name: 'Sub-Channel',
+      filters: [
+
+      ]
+    }
   ]
 };
 
@@ -19,32 +44,34 @@ let filterDefinition = {
 
   <div class="w-3/4 place-self-center">
 
-    <!-- Filter Title -->
+    <!-- START: Filter Title -->
     <div class="grid justify-items-stretch mb-8 mx-8 p-4 border-b-2 border-coolGray-200">
       <div class="justify-self-center font-bold uppercase text-base">
         {filterDefinition.name}
       </div>
     </div>
-    <!-- Filter Title -->
+    <!-- END: Filter Title -->
 
+    {#each filterDefinition.sections as section}
 
     <!-- Filter Buttons Channel -->
     <div class="py-5">
 
       <!-- Sub Title (if needed) -->
       <div class="mb-5 border-b-2 border-coolGray-200 px-3">
-        <span class="font-bold"> Channel </span>
+        <span class="font-bold">{section.name}</span>
       </div>
 
-      {#each filterDefinition.filters as filter}
+      {#each section.filters as filter}
         {#if !filter.default}
         <label class="container" title={filter.title}>{filter.name}
-          <input type="checkbox" />
+          <input type="checkbox" on:click={() => toggleFilter(filter)}/>
           <span class= "checkmark" />
         </label>
         {/if}
       {/each}
       </div>
+      {/each}
     <!-- Filter Buttons Channel -->
 
 

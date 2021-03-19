@@ -6,7 +6,7 @@
     }
 
 </script>
-<span on:click={toggleFilter} class:text-lightBlue-400={visible} class:text-white={!visible} class:bg-white={visible} class="mx-6 p-1 rounded-t my-2 select-none font-semibold">
+<span on:click={toggleFilter} class:text-lightBlue-400={visible} class:text-white={!visible} class:bg-white={visible} class="mx-6 p-1 rounded-t my-2 select-none font-semibold cursor-pointer">
     <svg xmlns="http://www.w3.org/2000/svg" class:text-lightBlue-400={visible} class:text-white={!visible} class="h-9 w-9 fill-current inline"
         viewBox="0 0 612 584.83"
     >
