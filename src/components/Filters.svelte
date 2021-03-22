@@ -5,10 +5,7 @@
     import FilterPanel from './FilterPanel.svelte';
     let className = '';
     let visible = false;
-    let crumbs = [
-        { label: "All Channels", title: "Select a Channel to filter Channels", default: true },
-        { label: "All Subchannels", title: "Select a Subchannel to filter Channels", default: true},
-        { label: "All Plans", title: "Select one or more Plans to filter Plans", default: true }
+    let currentFilters = [
     ];
     export { className as class };
 
@@ -26,6 +23,6 @@
 
 <nav {...$$restProps} class={classes} >
     <FilterToggle bind:visible/> 
-    <FilterCrumbsList bind:crumbs />
+    <FilterCrumbsList bind:currentFilters />
 </nav>
-<FilterPanel bind:visible bind:crumbs/>
+<FilterPanel bind:visible bind:currentFilters/>

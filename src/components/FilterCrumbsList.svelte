@@ -1,6 +1,6 @@
 <script>
 import FilterCrumb from './FilterCrumb.svelte'
-export let crumbs = [
+export let currentFilters = [
   
 ];
 </script>
@@ -11,7 +11,7 @@ export let crumbs = [
   }
 </style>
 <div class="px-8">
-  {#each crumbs as crumb }
-    <FilterCrumb {crumb}/> /
+  {#each currentFilters as filter }
+    <FilterCrumb {filter}/> /
   {/each}
 </div>

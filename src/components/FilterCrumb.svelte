@@ -1,5 +1,5 @@
 <script>
-export let crumb = null;
+export let filter = null;
 </script>
 <style>
   span {
@@ -7,4 +7,4 @@ export let crumb = null;
   }
 </style>
 
-<span class="select-none" title={crumb.title}>{crumb.label}</span>
+<span class="select-none" title={filter.title}>{filter.name}</span>
