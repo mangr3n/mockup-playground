@@ -6,27 +6,29 @@ export let currentFilters = [];
 // Is the filter in the current filters.
 const isShowing = (filter, currentFilters) => {
   // Get the array of items that match the filter from the items in currentfilters.
-  const result = currentFilters.filter((item) => item.id == filter.id)
+  const result = currentFilters.filter((item) => item.id == filter)
   return result.length > 0;
 };
 
 // Should I show in my list for toggling?
 const shouldShow = (filter,currentFilters) => {
-  // Do I have a parent?
-  if (filter.parent) {
-    if (isShowing(filter.parent, currentFilters)) {
-      return true;
-    } else {
-      return currentFilters.filter(item => item.type == filter.type).length == 0;
-      // Does my filter type have a parent?
-      if (definition.filterType.parent) {
-        // Is the default for my parent type showing?
-        return isShowing(definition.defaults[parent], currentFilters);
-      }
-    }
-  } else {
-    return true;
-  }
+  // If I don't have a parent filter then draw me
+  if (!filter.parent) return true;
+  // If my parent is showing draw me
+  if (isShowing(filter.parent, currentFilters)) return true;
+  
+  // Get my Type
+  const myFilteredTypes =  definition.filterTypes.filter(item => {
+    return filter.type == item.type;
+  });
+  // Find my ParentType
+  const parentType = myFilteredTypes[0].parent;
+
+  // If no other filter of my parent's type is showing, then draw me.  
+  // ("All Channels" means "All-Subchannels")
+  if (currentFilters.filter(item => item.type == parentType).length == 0) return true;
+  // Otherwise, don't draw me.
+  return false;
 }
 
 const toggleFilter = (filter, currentFitlers, event) => {
@@ -76,7 +78,7 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
         {#each section.filters as filter, name}
           {#if !filter.default && shouldShow(filter,currentFilters)}
           <label class="container" title={filter.title}> {filter.name}
-            <input type="checkbox" checked={isShowing(filter, currentFilters)} on:input={(value) => currentFilters = toggleFilter(filter,currentFilters, value)}/>
+            <input type="checkbox" checked={isShowing(filter.id, currentFilters)} on:input={(value) => currentFilters = toggleFilter(filter,currentFilters, value)}/>
             <span class= "checkmark" />
           </label>
           {/if}
