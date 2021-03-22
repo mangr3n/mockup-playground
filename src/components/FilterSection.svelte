@@ -1,5 +1,6 @@
 <script>
 
+export let definition;
 export let currentFilters = [];
 
 // Is the filter in the current filters.
@@ -18,9 +19,9 @@ const shouldShow = (filter,currentFilters) => {
     } else {
       return currentFilters.filter(item => item.type == filter.type).length == 0;
       // Does my filter type have a parent?
-      if (filterType.parent) {
+      if (definition.filterType.parent) {
         // Is the default for my parent type showing?
-        return isShowing(defaults[parent], currentFilters);
+        return isShowing(definition.defaults[parent], currentFilters);
       }
     }
   } else {
@@ -41,38 +42,8 @@ const toggleFilter = (filter, currentFitlers, event) => {
 
 $: console.log("FilterChannels/currentFilters: ",currentFilters);
 
-let filterTypes = [
-  { type: "Channel" },
-  { type: "Sub-Channel", parent: "Channel" }
-];
 
-let defaults = {
-  "Channel": { name: "All Channels", default: true, title: "Select a Channel to filter Channels", type: "Channel"},
-  "Sub-Channel": { name: "All Sub-Channels", default: true, title: "Select a Sub-Channel to filter Sub-Channels", type: "Sub-Channel"}
-}
-let filterDefinition = {
-  name: "Channels",
-  sections: [
-    {
-      name: 'Channel',
-      filters: [
-        { name: "All Channels", default: true, title: "Select a Channel to filter Channels", type: "Channel"},
-        { id: "Channel:Commercial", name: "Commercial", default: false, title: "Channel: Commercial", type: "Channel"},
-        { name: "Employer", default: false, title: "Channel: Employer", type: "Channel"},
-        { name: "Government", default: false, title: "Channel: Governement", type: "Channel"},
-        { name: "Medicare", default: false, title: "Channel: Medicare", type: "Channel"},
-        { name: "Medicaid", default: false, title: "Channel: State Medicaid", type: "Channel"}
-      ]
-    },
-    {
-      name: 'Sub-Channel',
-      filters: [
-        { name: "All Sub-Channels", default: true, title: "Select a Sub-Channel to filter Sub-Channels", type: "Sub-Channel"},
-        { name: "Commercial", default: false, title: "Sub-Channel: Commercial", type: "Sub-Channel", parent: "Channel:Commercial"},
-      ]
-    }
-  ]
-};
+
 
 </script>
 
@@ -85,12 +56,12 @@ let filterDefinition = {
     <!-- START: Filter Title -->
     <div class="grid justify-items-stretch mb-8 mx-8 p-4 border-b-2 border-coolGray-200">
       <div class="justify-self-center font-bold uppercase text-base">
-        {filterDefinition.name}
+        {definition.name}
       </div>
     </div>
     <!-- END: Filter Title -->
 
-    {#each filterDefinition.sections as section}
+    {#each definition.sections as section}
 
     <!-- Filter Buttons Channel -->
     <div class="py-5">
