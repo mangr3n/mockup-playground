@@ -2,17 +2,54 @@
 
 export let currentFilters = [];
 
-const toggleFilter = (filter) => {
-  if (currentFilters.includes(filter)) {
+// Is the filter in the current filters.
+const isShowing = (filter) => {
+  // Get the array of items that match the filter from the items in currentfilters.
+  const result = currentFilters.filter((item) => item.id == filter.id)
+  return result.length > 0;
+};
+
+// Should I show in my list for toggling?
+const shouldShow = (filter,currentFilters) => {
+  // Do I have a parent?
+  if (filter.parent) {
+    if (isShowing(filter.parent)) {
+      return true;
+    } else {
+      return currentFilters.filter(item => item.type == filter.type).length == 0;
+      // Does my filter type have a parent?
+      if (filterType.parent) {
+        // Is the default for my parent type showing?
+        return isShowing(defaults[parent]);
+      }
+    }
+  } else {
+    return true;
+  }
+}
+
+const toggleFilter = (filter, event) => {
+  console.log("FilterChannels/toggleFilter", event);
+  if (event.target.checked) {
+    currentFilters = [...currentFilters,filter];
+  } else {
     currentFilters = currentFilters.filter( item => {
       return item !== filter;
     });
-  } else {
-    currentFilters.push(filter);
   }
 };
 
 $: console.log("CurrentFilters: ",currentFilters);
+
+let filterTypes = [
+  { type: "Channel" },
+  { type: "Sub-Channel", parent: "Channel" }
+]
+
+let defaults = {
+  "Channel": { name: "All Channels", default: true, title: "Select a Channel to filter Channels", type: "Channel"},
+  "Sub-Channel": { name: "All Sub-Channels", default: true, title: "Select a Sub-Channel to filter Sub-Channels", type: "Sub-Channel"}
+}
 let filterDefinition = {
   name: "Channels",
   sections: [
@@ -20,7 +57,7 @@ let filterDefinition = {
       name: 'Channel',
       filters: [
         { name: "All Channels", default: true, title: "Select a Channel to filter Channels", type: "Channel"},
-        { name: "Commercial", default: false, title: "Channel: Commercial", type: "Channel"},
+        { id: "Channel:Commercial", name: "Commercial", default: false, title: "Channel: Commercial", type: "Channel"},
         { name: "Employer", default: false, title: "Channel: Employer", type: "Channel"},
         { name: "Government", default: false, title: "Channel: Governement", type: "Channel"},
         { name: "Medicare", default: false, title: "Channel: Medicare", type: "Channel"},
@@ -30,7 +67,8 @@ let filterDefinition = {
     {
       name: 'Sub-Channel',
       filters: [
-
+        { name: "All Sub-Channels", default: true, title: "Select a Sub-Channel to filter Sub-Channels", type: "Sub-Channel"},
+        { name: "Commercial", default: false, title: "Sub-Channel: Commercial", type: "Sub-Channel", parent: "Channel:Commercial"},
       ]
     }
   ]
@@ -62,10 +100,11 @@ let filterDefinition = {
         <span class="font-bold">{section.name}</span>
       </div>
 
+
       {#each section.filters as filter}
-        {#if !filter.default}
+        {#if !filter.default && shouldShow(filter,currentFilters)}
         <label class="container" title={filter.title}>{filter.name}
-          <input type="checkbox" on:click={() => toggleFilter(filter)}/>
+          <input type="checkbox" on:input={(value) => toggleFilter(filter,value)}/>
           <span class= "checkmark" />
         </label>
         {/if}
@@ -73,8 +112,6 @@ let filterDefinition = {
       </div>
       {/each}
     <!-- Filter Buttons Channel -->
-
-
   </div>
 </div>
 
