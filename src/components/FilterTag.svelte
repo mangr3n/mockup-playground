@@ -5,17 +5,17 @@
 
   const remover = (item) => {
     return () => {
-      console.log("Dispatching removeCrumb",item);
-      dispatch('removeCrumb', item);
+      console.log("Dispatching removeFilter",item);
+      dispatch('removeFilter', item);
     }
   };
-  export let crumb = null;
-  
+  export let filter = null;
+$:console.log("FilterTag/filter", filter);
 </script>
 
-<span class="border-2 border-gray-700 py-0 px-1.5 p-2 m-1 text-xs select-none" title={crumb.title}>
-  {crumb.label} 
-  {#if !crumb.default}
-  <span class="hover:bg-gray-200 cursor-pointer pl-0.5 pr-0.5 text-sm font-medium" on:click={remover(crumb)}>x</span>
+<span class="border-2 border-gray-700 py-0 px-1.5 p-2 m-1 text-xs select-none" title={filter.title}>
+  {filter.name} 
+  {#if !filter.default}
+  <span class="hover:bg-gray-200 cursor-pointer pl-0.5 pr-0.5 text-sm font-medium" on:click={remover(filter)}>x</span>
   {/if}
 </span>

@@ -3,7 +3,7 @@
 export let currentFilters = [];
 
 // Is the filter in the current filters.
-const isShowing = (filter) => {
+const isShowing = (filter, currentFilters) => {
   // Get the array of items that match the filter from the items in currentfilters.
   const result = currentFilters.filter((item) => item.id == filter.id)
   return result.length > 0;
@@ -13,14 +13,14 @@ const isShowing = (filter) => {
 const shouldShow = (filter,currentFilters) => {
   // Do I have a parent?
   if (filter.parent) {
-    if (isShowing(filter.parent)) {
+    if (isShowing(filter.parent, currentFilters)) {
       return true;
     } else {
       return currentFilters.filter(item => item.type == filter.type).length == 0;
       // Does my filter type have a parent?
       if (filterType.parent) {
         // Is the default for my parent type showing?
-        return isShowing(defaults[parent]);
+        return isShowing(defaults[parent], currentFilters);
       }
     }
   } else {
@@ -28,23 +28,23 @@ const shouldShow = (filter,currentFilters) => {
   }
 }
 
-const toggleFilter = (filter, event) => {
+const toggleFilter = (filter, currentFitlers, event) => {
   console.log("FilterChannels/toggleFilter", event);
   if (event.target.checked) {
-    currentFilters = [...currentFilters,filter];
+    return [...currentFilters,filter];
   } else {
-    currentFilters = currentFilters.filter( item => {
+    return currentFilters.filter( item => {
       return item !== filter;
     });
   }
 };
 
-$: console.log("CurrentFilters: ",currentFilters);
+$: console.log("FilterChannels/currentFilters: ",currentFilters);
 
 let filterTypes = [
   { type: "Channel" },
   { type: "Sub-Channel", parent: "Channel" }
-]
+];
 
 let defaults = {
   "Channel": { name: "All Channels", default: true, title: "Select a Channel to filter Channels", type: "Channel"},
@@ -101,14 +101,16 @@ let filterDefinition = {
       </div>
 
 
-      {#each section.filters as filter}
-        {#if !filter.default && shouldShow(filter,currentFilters)}
-        <label class="container" title={filter.title}>{filter.name}
-          <input type="checkbox" on:input={(value) => toggleFilter(filter,value)}/>
-          <span class= "checkmark" />
-        </label>
-        {/if}
-      {/each}
+      {#if currentFilters !== null}
+        {#each section.filters as filter, name}
+          {#if !filter.default && shouldShow(filter,currentFilters)}
+          <label class="container" title={filter.title}> {filter.name}
+            <input type="checkbox" checked={isShowing(filter, currentFilters)} on:input={(value) => currentFilters = toggleFilter(filter,currentFilters, value)}/>
+            <span class= "checkmark" />
+          </label>
+          {/if}
+        {/each}
+      {/if}
       </div>
       {/each}
     <!-- Filter Buttons Channel -->
