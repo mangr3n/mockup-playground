@@ -21,11 +21,12 @@ const shouldShow = (filter,currentFilters) => {
   const myFilteredTypes =  definition.filterTypes.filter(item => {
     return filter.type == item.type;
   });
-  // Find my ParentType
+  // Find my Type'sParentType
   const parentType = myFilteredTypes[0].parent;
 
   // If no other filter of my parent's type is showing, then draw me.  
   // ("All Channels" means "All-Subchannels")
+  // (Any "Channel" not my parent, means don't draw me...)
   if (currentFilters.filter(item => item.type == parentType).length == 0) return true;
   // Otherwise, don't draw me.
   return false;
