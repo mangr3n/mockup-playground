@@ -52,22 +52,24 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
 
 <div
   class="w-1/6 inline-flex flex-col align-top justify-start content-start
-  border-r-2 border-coolGray-500 select-none">
+  border-r-2 border-coolGray-500 select-none overflow-x-auto">
 
   <div class="w-3/4 place-self-center">
-
+    
     <!-- START: Filter Title -->
-    <div class="grid justify-items-stretch mb-8 mx-8 p-4 border-b-2 border-coolGray-200">
+    <div class="grid justify-items-stretch mb-8 py-4 px-14 z-40 border-b-2 border-coolGray-200 absolute bg-white">
       <div class="justify-self-center font-bold uppercase text-base">
         {definition.name}
       </div>
     </div>
     <!-- END: Filter Title -->
 
+    <div class="mt-20">
+
     {#each definition.sections as section}
 
     <!-- Filter Buttons Channel -->
-    <div class="py-5">
+    <div class="py-5 overflow-x-auto">
 
       <!-- Sub Title (if needed) -->
       <div class="mb-5 border-b-2 border-coolGray-200 px-3">
@@ -88,6 +90,7 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
       </div>
       {/each}
     <!-- Filter Buttons Channel -->
+    </div>
   </div>
 </div>
 
