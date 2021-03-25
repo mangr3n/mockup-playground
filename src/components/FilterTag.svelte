@@ -13,9 +13,23 @@
 $:console.log("FilterTag/filter", filter);
 </script>
 
-<span class="border-2 border-gray-700 py-0 px-1.5 p-2 m-1 text-xs select-none" title={filter.title}>
+<style>
+  .filter-tag {
+    @apply border-2 border-gray-700 py-0 px-1.5 p-2 m-1 text-xs select-none;
+  }
+
+  .close-tag {
+    @apply cursor-pointer pl-0.5 pr-0.5 text-sm font-medium;
+  }
+
+  .close-tag:hover{
+    @apply bg-gray-200;
+  }
+</style>
+
+<span class="filter-tag" title={filter.title}>
   {filter.name} 
   {#if !filter.default}
-  <span class="hover:bg-gray-200 cursor-pointer pl-0.5 pr-0.5 text-sm font-medium" on:click={remover(filter)}>x</span>
+  <span class="close-tag" on:click={remover(filter)}>x</span>
   {/if}
 </span>

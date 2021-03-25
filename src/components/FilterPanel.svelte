@@ -570,9 +570,14 @@
   };
 </script>
 
+<style>
+  .filters-container {
+    @apply bg-white absolute flex flex-row items-stretch h-5/6 top-12 left-0 right-0 border-2 shadow-xl;
+  }
+</style>
+
 <div
-  class="bg-white absolute flex flex-row items-stretch h-5/6 top-12 left-0
-  right-0 border-2 shadow-xl"
+  class="filters-container"
   class:hidden={!visible}>
   <FilterCatcher bind:currentFilters />
   <FilterSection definition={channelsFilterDefinition} bind:currentFilters />

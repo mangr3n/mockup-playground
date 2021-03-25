@@ -20,8 +20,18 @@ import FilterTag from './FilterTag.svelte'
   }
 </script>
 
-<div class="w-1/6 border-r-2 border-coolGray-500 p-4">
-  <div class="flex flex-row flex-wrap">
+<style>
+  .filter-catcher {
+    @apply w-1/6 border-r-2 border-coolGray-500 p-4;
+  }
+  
+  .crumb-container {
+    @apply flex flex-row flex-wrap;
+  }
+</style>
+
+<div class="filter-catcher">
+  <div class="crumb-container">
     {#each currentFilters as filter, name }
     <FilterTag {filter} on:removeFilter={removeFilter}/>
     {/each}

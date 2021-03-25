@@ -50,51 +50,35 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
 
 </script>
 
-<div
-  class="w-1/6 inline-flex flex-col align-top justify-start content-start
-  border-r-2 border-coolGray-500 select-none overflow-x-auto">
-
-  <div class="w-3/4 place-self-center">
-    
-    <!-- START: Filter Title -->
-    <div class="grid justify-items-stretch mb-8 py-4 px-14 z-40 border-b-2 border-coolGray-200 absolute bg-white">
-      <div class="justify-self-center font-bold uppercase text-base">
-        {definition.name}
-      </div>
-    </div>
-    <!-- END: Filter Title -->
-
-    <div class="mt-20">
-
-    {#each definition.sections as section}
-
-    <!-- Filter Buttons Channel -->
-    <div class="py-5 overflow-x-auto">
-
-      <!-- Sub Title (if needed) -->
-      <div class="mb-5 border-b-2 border-coolGray-200 px-3">
-        <span class="font-bold">{section.name}</span>
-      </div>
-
-
-      {#if currentFilters !== null}
-        {#each section.filters as filter, name}
-          {#if !filter.default && shouldShow(filter,currentFilters)}
-          <label class="container" title={filter.title}> {filter.name}
-            <input type="checkbox" checked={isShowing(filter.id, currentFilters)} on:input={(value) => currentFilters = toggleFilter(filter,currentFilters, value)}/>
-            <span class= "checkmark" />
-          </label>
-          {/if}
-        {/each}
-      {/if}
-      </div>
-      {/each}
-    <!-- Filter Buttons Channel -->
-    </div>
-  </div>
-</div>
-
 <style>
+  .filter-section {
+    @apply w-1/6 inline-flex flex-col align-top justify-start content-start border-r-2 border-coolGray-500 select-none overflow-x-auto;
+  }
+
+  .filter-container {
+    @apply w-3/4 place-self-center;
+  }
+
+  .filter-title-container {
+    @apply grid justify-items-stretch mb-8 py-4 px-14 z-40 border-b-2 border-coolGray-200 absolute bg-white;
+  }
+
+  .filter-title-format {
+    @apply justify-self-center font-bold uppercase text-base;
+  }
+
+  .filters-margin {
+    @apply mt-20;
+  }
+
+  .filter-buttons-section {
+    @apply py-5 overflow-x-auto;
+  }
+
+  .filter-subtitle {
+    @apply mb-5 border-b-2 border-coolGray-200 px-3 font-bold;
+  }
+
   .container {
     @apply block relative pl-8 mb-4 cursor-pointer text-base select-none items-center;
   }
@@ -132,3 +116,48 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
     border-width: 0 2px 2px 0;
   }
 </style>
+
+<div
+  class="filter-section">
+
+  <div class="filter-container">
+    
+    <!-- START: Filter Title -->
+    <div class="filter-title-container">
+      <div class="filter-title-format">
+        {definition.name}
+      </div>
+    </div>
+    <!-- END: Filter Title -->
+
+    <!-- Added margin to top of filters so title doesn't appear over the filters -->
+    <div class="filters-margin">
+
+    {#each definition.sections as section}
+
+    <!-- Filter Buttons Section -->
+    <div class="filter-buttons-section">
+
+      <!-- Sub Title (if needed) -->
+      <div class="filter-subtitle">
+        <span>{section.name}</span>
+      </div>
+
+
+      {#if currentFilters !== null}
+        {#each section.filters as filter, name}
+          {#if !filter.default && shouldShow(filter,currentFilters)}
+          <label class="container" title={filter.title}> {filter.name}
+            <input type="checkbox" checked={isShowing(filter.id, currentFilters)} on:input={(value) => currentFilters = toggleFilter(filter,currentFilters, value)}/>
+            <span class= "checkmark" />
+          </label>
+          {/if}
+        {/each}
+      {/if}
+      </div>
+      {/each}
+    <!-- Filter Buttons Channel -->
+    </div>
+  </div>
+</div>
+
