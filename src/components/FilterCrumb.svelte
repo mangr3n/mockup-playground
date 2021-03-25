@@ -4,7 +4,8 @@ export let filter = null;
 <style>
   span {
     @apply p-2 text-white;
+    @apply select-none;
   }
 </style>
 
-<span class="select-none" title={filter.title}>{filter.name}</span>
+<span title={filter.title}>{filter.name}</span>

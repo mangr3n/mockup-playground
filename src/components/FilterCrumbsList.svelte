@@ -5,12 +5,13 @@ export let currentFilters = [
 ];
 </script>
 <style>
-  div {
+  .crumbFilterList {
     @apply text-lg;
     @apply text-white flex justify-center items-center;
+    @apply px-8;
   }
 </style>
-<div class="px-8">
+<div class="crumbFilterList">
   {#each currentFilters as filter }
     <FilterCrumb {filter}/> /
   {/each}

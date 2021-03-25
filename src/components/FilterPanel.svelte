@@ -9,8 +9,8 @@
   const channelsFilterDefinition = {
     name: "Channels",
     filterTypes: [
-      { type: "Channel" },
-      { type: "Sub-Channel", parent: "Channel" }
+      { type: "Channel", multi: false },
+      { type: "Sub-Channel", parent: "Channel", multi: false }
     ],
     filterDefaults: {
       Channel: {
