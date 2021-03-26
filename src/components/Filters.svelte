@@ -25,4 +25,4 @@
     <FilterToggle bind:visible/> 
     <FilterCrumbsList bind:currentFilters />
 </nav>
-<FilterPanel bind:visible bind:currentFilters/>
+<FilterPanel {visible} bind:currentFilters/>

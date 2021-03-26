@@ -571,15 +571,22 @@
 </script>
 
 <style>
-  .filters-container {
+  div {
     @apply bg-white absolute flex flex-row items-stretch h-5/6 top-12 left-0 right-0 border-2 shadow-xl;
+  }
+  .filters-container-visible {
+    @apply block;
+  }
+  .filters-container-not-visible {
+    display:none;
   }
 </style>
 
-<div
-  class="filters-container"
-  class:hidden={!visible}>
+<div >
   <FilterCatcher bind:currentFilters />
   <FilterSection definition={channelsFilterDefinition} bind:currentFilters />
   <FilterSection definition={geographyFilterDefinition} bind:currentFilters />
+  <FilterSection definition={channelsFilterDefinition} bind:currentFilters />
+  <FilterSection definition={geographyFilterDefinition} bind:currentFilters />
+  <FilterSection definition={channelsFilterDefinition} bind:currentFilters />
 </div>

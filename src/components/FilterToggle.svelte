@@ -8,16 +8,34 @@
 </script>
 
 <style>
+    .show-filters-visible {
+        @apply text-lightBlue-400;
+        @apply bg-white;
+    }
+    .show-filters-not-visible {
+        @apply text-white;        
+    }
+
     .show-filters {
         @apply mx-6 p-1 rounded-t my-2 select-none font-semibold cursor-pointer;
     }
     
-    .icon-filter {
+    .ov-icon-filter {
         @apply h-9 w-9 fill-current inline;
     }
+
+    .icon-filter-visible {
+        @apply text-lightBlue-400;
+    }
+    .icon-filter-not-visible {
+        @apply text-white;
+    }
 </style>
-<span on:click={toggleFilter} class:text-lightBlue-400={visible} class:text-white={!visible} class:bg-white={visible} class="show-filters">
-    <svg xmlns="http://www.w3.org/2000/svg" class:text-lightBlue-400={visible} class:text-white={!visible} class="icon-filter"
+<span 
+    on:click={toggleFilter} 
+    class="show-filters {visible?'show-filters-visible':'show-filters-not-visible'}"
+>
+    <svg xmlns="http://www.w3.org/2000/svg" class="ov-icon-filter {visible?'.icon-filter-visible':'icon-filter-not-visible'}"
         viewBox="0 0 612 584.83"
     >
         <path d="M335.92,169.75a49,49,0,0,1,5.48-22.55H127a22.61,22.61,0,0,0-22.54,22.55h0A22.6,22.6,0,0,0,127,192.29H341.4A49,49,0,0,1,335.92,169.75Z"/>
