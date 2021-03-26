@@ -16,12 +16,12 @@
     $: console.log('visible',visible)
 </script>
 <style>
-    :global(.navbar) {
-        @apply w-full bg-lightBlue-900 fixed absolute flex flex-row items-center h-12 leading-10 top-0 right-0 left-0;
+    nav {
+        @apply w-full bg-lightBlue-900 fixed absolute flex flex-row items-center h-12 leading-10 top-12 right-0 left-0;
     }
 </style>
 
-<nav {...$$restProps} class={classes} >
+<nav {...$$restProps} >
     <FilterToggle bind:visible/> 
     <FilterCrumbsList bind:currentFilters />
 </nav>

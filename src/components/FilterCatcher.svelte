@@ -6,8 +6,6 @@ import FilterTag from './FilterTag.svelte'
   export let currentFilters = [
   ];
 
-  const count = writable(0);
-
   const removeFilter = (event) => {
     currentFilters = currentFilters.filter((value,x,y) => {
       console.log("inFilter",{value,x,y, detail:event.detail, same: value == event.detail});
@@ -22,7 +20,11 @@ import FilterTag from './FilterTag.svelte'
 
 <style>
   .filter-catcher {
-    @apply w-1/6 border-r-2 border-coolGray-500 p-4;
+    @apply w-1/6;
+    @apply border-r-2;
+    @apply border-coolGray-500;
+    @apply p-4;
+    @apply block;
   }
   
   .crumb-container {

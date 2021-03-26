@@ -1,5 +1,6 @@
 <script>
     import Filters from './components/Filters.svelte';
+    import NavBar from './components/NavBar.svelte';
     import {onMount} from 'svelte';
 
     onMount (() =>{
@@ -13,5 +14,6 @@
     }
 </style>
 
+<NavBar/>
 <Filters/>
 <img src="/Filters-2.png"/>
