@@ -1,0 +1,9 @@
+* CSS Conflicts 
+  * Questions: inline the style directives for the used tailwindcss as svelte styles 
+  * Worked
+* Where do we get our data? How do we get our data?
+  * Option - inline html/script fragment
+  * hit and endpoint for the data (REST Call)
+
+* TASKS
+  * Extract the tailwindcss classes from the html, into svelte styles (using @apply)

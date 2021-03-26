@@ -2,11 +2,13 @@
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
-    "test": "echo \"This template does not include a test runner by default.\" && exit 1"
+    "test": "echo \"This template does not include a test runner by default.\" && exit 1",
+    "package": "zip ov_components.zip build/**/*"
   },
   "devDependencies": {
     "@snowpack/plugin-postcss": "^1.1.0",
     "@snowpack/plugin-svelte": "^3.5.2",
+    "@snowpack/plugin-webpack": "^2.3.1",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.8",
     "postcss-apply": "^0.12.0",
