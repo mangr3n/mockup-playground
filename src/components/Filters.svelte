@@ -1,3 +1,6 @@
+<head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
 <script>
     import FilterCrumbsList from './FilterCrumbsList.svelte';
     import classnames from './utils';
@@ -17,7 +20,8 @@
 </script>
 <style>
     nav {
-        @apply w-full bg-lightBlue-900 fixed absolute flex flex-row items-center h-12 leading-10 top-12 right-0 left-0;
+        @apply w-full fixed absolute flex flex-row items-center h-12 leading-10 top-12 right-0 left-0;
+        background-color: #1c485f;
     }
 </style>
 
@@ -26,3 +30,4 @@
     <FilterCrumbsList bind:currentFilters />
 </nav>
 <FilterPanel {visible} bind:currentFilters/>
+

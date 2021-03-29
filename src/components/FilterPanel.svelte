@@ -28,7 +28,7 @@ onMount(() => {
 
 <style>
   div {
-    @apply bg-white absolute flex flex-row flex-nowrap items-stretch h-5/6 top-12 left-0 right-0 border-2 shadow-xl;
+    @apply bg-white absolute flex flex-row flex-nowrap items-stretch h-5/6 top-24 left-0 right-0 border-2 shadow-xl;
   }
 </style>
 

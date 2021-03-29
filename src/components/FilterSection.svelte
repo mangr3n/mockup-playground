@@ -52,7 +52,7 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
 
 <style>
   .filter-section {
-    @apply w-1/6 inline-flex flex-col align-top justify-start content-start border-r-2 border-coolGray-500 select-none overflow-x-auto;
+    @apply w-1/6 inline-flex flex-col align-top justify-start content-start border-r-2 border-coolGray-300 select-none overflow-x-auto;
   }
 
   .filter-container {
