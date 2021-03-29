@@ -9,7 +9,12 @@ module.exports = {
     /* ... */
     '@snowpack/plugin-svelte',
     '@snowpack/plugin-postcss',
-    "@snowpack/plugin-webpack"
+    ["@snowpack/plugin-webpack",{
+      outputPattern: {
+        css: "[name].css",
+        js: "[name].js"
+      }
+    }]
   ],
   routes: [
     /* Enable an SPA Fallback in development: */

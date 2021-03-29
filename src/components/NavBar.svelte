@@ -1,4 +1,6 @@
 <script>
+
+  import {appRoot} from '../appRoot';
 </script>
 <style>
 nav {
@@ -102,7 +104,7 @@ div.options {
 }
 </style>
 <nav class="navbar">
-<img class="power" src="/BusinessOnePowerLogo_Retna.png"/>
+<img class="power" src="{$appRoot}/OneVision_Logo_Sept2018.png"/>
   <div class="dropdown">
     <button class="dropbtn">Dashboards
       <i class="fa fa-caret-down"></i>

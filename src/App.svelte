@@ -16,4 +16,4 @@
 
 <NavBar/>
 <Filters/>
-<img src="/Filters-2.png"/>
+<img src="../images/Filters-2.png"/>

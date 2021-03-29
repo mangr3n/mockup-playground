@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { appRoot } from '../appRoot';
   import FilterCatcher from "./FilterCatcher.svelte";
   import FilterSection from "./FilterSection.svelte";
   export let visible;
@@ -11,13 +12,13 @@ let channelsFilterDefinition = null;
 let geographyFilterDefinition = null;
 
 onMount(() => {
-  fetch("/data/channelFilterDef.json")
+  fetch($appRoot + "/data/channelFilterDef.json")
     .then(r => r.json())
     .then(json => {
       channelsFilterDefinition = json;
     }
   );
-  fetch("/data/geographyFilterDef.json")
+  fetch($appRoot + "/data/geographyFilterDef.json")
     .then(r => r.json())
     .then(json => {
       geographyFilterDefinition = json;
