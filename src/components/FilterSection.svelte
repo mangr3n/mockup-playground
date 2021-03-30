@@ -52,7 +52,7 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
 
 <style>
   .filter-section {
-    @apply w-1/6 inline-flex flex-col align-top justify-start content-start border-r-2 border-coolGray-300 select-none overflow-x-auto;
+    @apply w-1/6 inline-flex flex-col align-top justify-start content-start border-solid border-r-2 border-coolGray-300 select-none overflow-x-auto;
   }
 
   .filter-container {
@@ -60,7 +60,7 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
   }
 
   .filter-title-container {
-    @apply grid justify-items-stretch mb-8 py-4 px-14 z-40 border-b-2 border-coolGray-200 absolute bg-white;
+    @apply grid justify-items-stretch mb-8 py-4 px-14 z-10 border-solid border-b-2 border-coolGray-200 absolute bg-white;
   }
 
   .filter-title-format {
@@ -76,7 +76,7 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
   }
 
   .filter-subtitle {
-    @apply mb-5 border-b-2 border-coolGray-200 px-3 font-bold;
+    @apply mb-5 border-solid border-b-2 border-coolGray-200 px-3 font-bold;
   }
 
   .container {
@@ -88,7 +88,7 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
   }
 
   .checkmark {
-    @apply absolute top-0 left-0 h-5 w-5 border-2 border-gray-200 rounded;
+    @apply absolute top-0 left-0 h-5 w-5 border-solid border-2 border-gray-200 rounded;
   }
 
   .container:hover input ~ .checkmark {

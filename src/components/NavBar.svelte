@@ -5,6 +5,7 @@
 <style>
 nav {
   @apply absolute top-0 left-0 right-0;
+  @apply px-14;
   @apply h-12;
   @apply flex;
   @apply flex-row;
@@ -13,8 +14,10 @@ nav {
 }
 
 img.power {
-  @apply mx-6;
+  @apply mr-6;
   @apply p-2;
+  margin-top: -6px;
+  margin-bottom: 1px;
 }
 img.logo {
   @apply flex-grow-0;
@@ -33,7 +36,6 @@ div.options {
   @apply flex flex-row flex-grow-0;
   @apply ml-auto;
   @apply items-center;
-  @apply mr-16;
 }
 
 .options i {
@@ -45,11 +47,16 @@ div.options {
   color: #72bf44;
   cursor: pointer;
 }
+
+.dropdown.user:hover i {
+  color: #72bf44;
+}
 /* Navbar container */
 .navbar {
   @apply select-none;
   background-color: #133547;
   color: white;
+  padding-top: 1px;
 }
 
 /* Links inside the navbar */
@@ -65,11 +72,25 @@ div.options {
 }
 
 /* Dropdown button */
-.dropdown .dropbtn {
+.dropdown.menu .dropbtn {
   @apply text-base text-white text-center py-3 px-5;
   background-color: inherit;
   font-family: inherit; /* Important for vertical align on mobile phones */
   margin: 0; /* Important for vertical align on mobile phones */
+}
+
+
+/* Dropdown buttons user icon */
+.dropdown.user .dropdown-content.user {
+  @apply text-base text-white text-left;
+  background-color: white;
+  color: black;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+.user-info {
+  @apply px-8 py-3 mx-4 border-solid border-b-2 border-coolGray-200;
 }
 
 /* Add a red background color to navbar links on hover */
@@ -79,13 +100,22 @@ div.options {
 
 /* Dropdown content (hidden by default) */
 .dropdown-content {
-  @apply hidden absolute;
+  @apply hidden fixed z-20;
+  top: 48px;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
 }
 
+/* Dropdown user icon (hidden by default) */
+.dropdown-content.user {
+  @apply hidden fixed z-20;
+  top: 20px;
+  right: 36px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
 /* Links inside the dropdown */
 .dropdown-content a {
   @apply float-none py-3 px-5 block text-left;
@@ -99,28 +129,42 @@ div.options {
 }
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+.dropdown.menu:hover .dropdown-content.menu {
+  @apply block;
+}
+
+/* Show the USER dropdown menu on hover */
+.dropdown.user:hover .dropdown-content.user {
   @apply block;
 }
 </style>
 <nav class="navbar">
-<img class="power" src="{$appRoot}/OneVision_Logo_Sept2018.png"/>
-  <div class="dropdown">
+<img class="power" src="{$appRoot}/logo_light.png"/>
+  <div class="dropdown menu">
     <button class="dropbtn">Dashboards
       <i class="fa fa-caret-down"></i>
     </button>
-    <div class="dropdown-content">
-      <a href="#">Access</a>
-      <a href="#">Lives</a>
-      <a href="#">Plan Profile</a>
+    <div class="dropdown-content menu">
+      <a href="#access">Access</a>
+      <a href="#lives">Lives</a>
+      <a href="#profile">Plan Profile</a>
     </div>
   </div>
-  <a href="#dashboard">Reports</a>
-  <a href="#reports">FTP</a>
+  <a href="#reports">Reports</a>
+  <a href="#ftp">FTP</a>
 
-<!--<img class="logo" src="/logo.png"/>-->
+
 <div class="options"> 
   <i class="fas fa-bookmark fa-lg"></i>
-  <i class="fas fa-user fa-lg"></i>
+  <div class="dropdown user">
+      <i class="fas fa-user fa-lg user-menu"></i>
+    <div class="dropdown-content user">
+      <div class="user-info">
+        <strong>Generic, Username</strong> <br/>
+        ugeneric@businessonetech.com
+      </div>
+      <a href="#logout">Logout</a>
+    </div>
+  </div>
 </div>
 </nav>

@@ -17,11 +17,12 @@
     }
 
     .show-filters {
-        @apply mx-6 p-1 rounded-t my-2 select-none font-semibold cursor-pointer;
+        @apply mx-6 p-1 rounded-t mt-2 select-none font-semibold cursor-pointer text-sm;
+        min-width: 135px;
     }
     
     .ov-icon-filter {
-        @apply h-9 w-9 fill-current inline;
+        @apply h-8 w-8 fill-current inline;
     }
 
     .icon-filter-visible {
@@ -48,5 +49,5 @@
         <path d="M485,392.87h-56.1a49.2,49.2,0,0,1,0,45.09H485a22.55,22.55,0,0,0,0-45.09Z"/>
         <path d="M385.13,474.62a59.21,59.21,0,1,1,59.2-59.21A59.28,59.28,0,0,1,385.13,474.62Zm0-98.41a39.21,39.21,0,1,0,39.2,39.2A39.25,39.25,0,0,0,385.13,376.21Z"/>
     </svg>
-    <span>Show Filters</span>
+    <span>{visible? 'Hide':'Show'} Filters</span>
 </span>

@@ -22,6 +22,7 @@ import FilterTag from './FilterTag.svelte'
   .filter-catcher {
     @apply w-1/6;
     @apply border-r-2;
+    @apply border-solid;
     @apply border-coolGray-300;
     @apply p-4;
     @apply block;
