@@ -3,7 +3,9 @@
     "start": "snowpack dev",
     "build": "snowpack build",
     "test": "echo \"This template does not include a test runner by default.\" && exit 1",
-    "package": "zip -r ov_components.zip build/*"
+    "package": "zip -r ov_components.zip build/*",
+    "clean": "rm ov_components.zip && rm -R build",
+    "full": "npm run build && npm run package"
   },
   "devDependencies": {
     "@snowpack/plugin-postcss": "^1.1.0",
