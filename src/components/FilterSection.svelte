@@ -91,11 +91,23 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
     @apply absolute top-0 left-0 h-5 w-5 border-solid border-2 border-gray-200 rounded;
   }
 
+  .radio {
+    @apply absolute top-0 left-0 h-5 w-5 border-solid border-2 border-gray-200 rounded-full;
+  }
+
   .container:hover input ~ .checkmark {
     @apply bg-gray-300;
   }
 
+  .container:hover input ~ .radio {
+    @apply bg-gray-300;
+  }
+
   .container input:checked ~ .checkmark {
+    @apply bg-blue-400;
+  }
+
+  .container input:checked ~ .radio {
     @apply bg-blue-400;
   }
 
@@ -105,14 +117,30 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
     @apply absolute hidden;
   }
 
+  .radio:after {
+    content: "";
+    @apply absolute hidden;
+  }
+
   /* Show checkmark when checked */
   .container input:checked ~ .checkmark:after {
+    @apply block;
+  }
+
+   /* Show radio when checked */
+   .container input:checked ~ .radio:after {
     @apply block;
   }
 
   /* Style the checkmark*/
   .container .checkmark:after {
     @apply left-1 top-0.5 w-1.5 h-2.5 border-white transform rotate-45;
+    border-width: 0 2px 2px 0;
+  }
+
+  /* Style the radio*/
+  .container .radio:after {
+    @apply left-1 top-1 w-2 h-2 rounded-full bg-white;
     border-width: 0 2px 2px 0;
   }
 </style>
@@ -149,7 +177,7 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
           {#if !filter.default && shouldShow(filter,currentFilters)}
           <label class="container" title={filter.title}> {filter.name}
             <input type="checkbox" checked={isShowing(filter.id, currentFilters)} on:input={(value) => currentFilters = toggleFilter(filter,currentFilters, value)}/>
-            <span class= "checkmark" />
+            <span class= "radio" />
           </label>
           {/if}
         {/each}

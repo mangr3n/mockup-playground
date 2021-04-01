@@ -6,7 +6,7 @@ export let currentFilters = [
 </script>
 <style>
   .crumbFilterList {
-    @apply text-lg;
+    @apply text-base;
     @apply text-white flex justify-center items-center;
     @apply px-8;
   }
