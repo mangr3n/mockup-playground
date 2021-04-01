@@ -34,9 +34,20 @@ import FilterTag from './FilterTag.svelte'
 </style>
 
 <div class="filter-catcher">
+  <div class="flex mb-4">
+    <button class="bg-coolGray-300 hover:bg-coolGray-400 text-black py-2 px-4 rounded flex-1 mx-2">
+      Cancel
+    </button>
+
+    <button class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-4 rounded flex-1 mx-2">
+      Apply
+    </button>
+  </div>
+  
   <div class="crumb-container">
     {#each currentFilters as filter, name }
     <FilterTag {filter} on:removeFilter={removeFilter}/>
     {/each}
+    <span class="ml-2 mt-1 underline cursor-pointer">Clear All</span>
   </div>
 </div>

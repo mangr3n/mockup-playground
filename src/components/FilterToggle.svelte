@@ -9,7 +9,7 @@
 
 <style>
     .show-filters-visible {
-        @apply text-lightBlue-400;
+        @apply text-lightBlue-500;
         @apply bg-white;
     }
     .show-filters-not-visible {
@@ -26,7 +26,7 @@
     }
 
     .icon-filter-visible {
-        @apply text-lightBlue-400;
+        @apply text-lightBlue-500;
     }
     .icon-filter-not-visible {
         @apply text-white;
