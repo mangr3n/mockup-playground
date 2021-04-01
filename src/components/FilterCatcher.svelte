@@ -31,15 +31,39 @@ import FilterTag from './FilterTag.svelte'
   .crumb-container {
     @apply flex flex-row flex-wrap;
   }
+
+  .filter-controls {
+    @apply flex mt-2 mb-8;
+  }
+
+  .button-cancel {
+    @apply bg-coolGray-300 text-black py-2 px-4 rounded flex-1 mx-2;
+  }
+
+  .button-cancel:hover {
+    @apply bg-coolGray-400;
+  }
+
+  .button-apply {
+    @apply bg-blue-400 text-white py-2 px-4 rounded flex-1 mx-2;
+  }
+
+  .button-apply:hover {
+    @apply bg-blue-500;
+  }
+
+  .clear-filters {
+    @apply ml-2 mt-1 underline cursor-pointer;
+  }
 </style>
 
 <div class="filter-catcher">
-  <div class="flex mb-4">
-    <button class="bg-coolGray-300 hover:bg-coolGray-400 text-black py-2 px-4 rounded flex-1 mx-2">
+  <div class="filter-controls">
+    <button class="button-cancel">
       Cancel
     </button>
 
-    <button class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-4 rounded flex-1 mx-2">
+    <button class="button-apply">
       Apply
     </button>
   </div>
@@ -48,6 +72,6 @@ import FilterTag from './FilterTag.svelte'
     {#each currentFilters as filter, name }
     <FilterTag {filter} on:removeFilter={removeFilter}/>
     {/each}
-    <span class="ml-2 mt-1 underline cursor-pointer">Clear All</span>
+    <span class="clear-filters">Clear All</span>
   </div>
 </div>
