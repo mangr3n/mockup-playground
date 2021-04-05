@@ -2,3 +2,5 @@
 build
 node_modules
 .history
+bin/settings.bat
+ov_components.zip

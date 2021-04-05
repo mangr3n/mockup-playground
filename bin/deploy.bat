@@ -6,13 +6,13 @@ echo "Deploy Directory - " %deploy_dir%
 rmdir /S /Q build
 del /Q ov_components.zip
 
-@REM build and package
-npm run build
-npm run package
+@REM @REM build and package
+call npm run build
+call npm run package
 
 @REM copy
-copy ov_components.zip %deploy_dir%\_SupportFiles
+copy /Y ov_components.zip %deploy_dir%\_SupportFiles
 
 @REM expand
-unzip %deploy_dir%\_SupportFiles\ov_components.zip -d %deploy_dir%\_SupportFiles\ov_components
+unzip -o -qq %deploy_dir%\_SupportFiles\ov_components.zip -d %deploy_dir%\_SupportFiles\ov_components
 
