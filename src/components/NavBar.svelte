@@ -145,8 +145,8 @@ div.options {
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content menu">
-      <a href="#access">Access</a>
-      <a href="#lives">Lives</a>
+      <a href="rdPage.aspx?rdReport=DashboardAccess">Access</a>
+      <a href="rdPage.aspx?rdReport=DashboardLives">Lives</a>
       <a href="#profile">Plan Profile</a>
     </div>
   </div>
