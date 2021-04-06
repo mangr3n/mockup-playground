@@ -1,22 +1,44 @@
 <script>
-import { writable } from 'svelte/store';
+  import { writable } from "svelte/store";
+  import FilterTag from "./FilterTag.svelte";
+  import { createEventDispatcher } from 'svelte';
 
+  export let currentFilters = [];
 
-import FilterTag from './FilterTag.svelte'
-  export let currentFilters = [
-  ];
+  const dispatch = createEventDispatcher();
 
   const removeFilter = (event) => {
-    currentFilters = currentFilters.filter((value,x,y) => {
-      console.log("inFilter",{value,x,y, detail:event.detail, same: value == event.detail});
+    currentFilters = currentFilters.filter((value, x, y) => {
+      console.log("inFilter", {
+        value,
+        x,
+        y,
+        detail: event.detail,
+        same: value == event.detail,
+      });
       if (value == event.detail) {
         return false;
       }
       return true;
     });
     console.log("FilterChannel/removeFilter: ", currentFilters);
-  }
+  };
 </script>
+
+<div class="filter-catcher">
+  <div class="filter-controls">
+    <button class="button-cancel" on:click={() => dispatch('cancel',null)}> Cancel </button>
+
+    <button class="button-apply" on:click={(e) => dispatch('apply',null)}> Apply </button>
+  </div>
+
+  <div class="crumb-container">
+    {#each currentFilters as filter, name}
+      <FilterTag {filter} on:removeFilter={removeFilter} />
+    {/each}
+    <span class="clear-filters" on:click={() => dispatch('clear',null)}>Clear All</span>
+  </div>
+</div>
 
 <style>
   .filter-catcher {
@@ -27,7 +49,7 @@ import FilterTag from './FilterTag.svelte'
     @apply p-4;
     @apply block;
   }
-  
+
   .crumb-container {
     @apply flex flex-row flex-wrap;
   }
@@ -56,22 +78,3 @@ import FilterTag from './FilterTag.svelte'
     @apply ml-2 mt-1 underline cursor-pointer;
   }
 </style>
-
-<div class="filter-catcher">
-  <div class="filter-controls">
-    <button class="button-cancel">
-      Cancel
-    </button>
-
-    <button class="button-apply">
-      Apply
-    </button>
-  </div>
-  
-  <div class="crumb-container">
-    {#each currentFilters as filter, name }
-    <FilterTag {filter} on:removeFilter={removeFilter}/>
-    {/each}
-    <span class="clear-filters">Clear All</span>
-  </div>
-</div>

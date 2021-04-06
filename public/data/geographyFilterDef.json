@@ -1,5 +1,10 @@
 {
   "name": "Geography",
+  "multiselect": {
+    "Geography-Type": false,
+    "State": true,
+    "CBSA": false
+  },
   "filterTypes": [
     {
       "type": "Geography-Type",

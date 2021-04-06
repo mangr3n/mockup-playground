@@ -32,13 +32,17 @@ const shouldShow = (filter,currentFilters) => {
   return false;
 }
 
-const toggleFilter = (filter, currentFitlers, event) => {
+const toggleFilter = (filterItem, currentFilters, event, multiselect) => {
   console.log("FilterChannels/toggleFilter", event);
   if (event.target.checked) {
-    return [...currentFilters,filter];
+    if (!multiselect) {
+      currentFilters = currentFilters.filter(item => item.type !== filterItem.type)
+    }
+    return [...currentFilters,filterItem];
+
   } else {
     return currentFilters.filter( item => {
-      return item !== filter;
+      return item !== filterItem;
     });
   }
 };
@@ -174,10 +178,10 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
 
 
       {#if currentFilters !== null}
-        {#each section.filters as filter, name}
+        {#each section.filters as filter}
           {#if !filter.default && shouldShow(filter,currentFilters)}
           <label class="container" title={filter.title}> {filter.name}
-            <input type="checkbox" checked={isShowing(filter.id, currentFilters)} on:input={(value) => currentFilters = toggleFilter(filter,currentFilters, value)}/>
+            <input type="checkbox" checked={isShowing(filter.id, currentFilters)} on:input={(value) => currentFilters = toggleFilter(filter,currentFilters, value, definition.multiselect[filter.type] )}/>
             <span class= "radio" />
           </label>
           {/if}

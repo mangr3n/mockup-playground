@@ -1,6 +1,6 @@
-<head>
+<svelte:head>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-</head>
+</svelte:head>
 <script>
     import FilterCrumbsList from './FilterCrumbsList.svelte';
     import classnames from './utils';
@@ -29,5 +29,5 @@
     <FilterToggle bind:visible/> 
     <FilterCrumbsList bind:currentFilters />
 </nav>
-<FilterPanel {visible} bind:currentFilters/>
+<FilterPanel bind:visible bind:currentFilters/>
 

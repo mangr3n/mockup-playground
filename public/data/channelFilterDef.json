@@ -1,14 +1,26 @@
 {
   "name": "Channels",
+  "multiselect": {
+    "Channel": false,
+    "Sub-Channel": false
+  },
+  "types": {
+    "Channel": {
+      "multiselect": false,
+      "parent": null
+    },
+    "Sub-Channel": {
+      "multiselect":false,
+      "parent": "Channel"
+    }
+  },
   "filterTypes": [
     {
-      "type": "Channel",
-      "multi": false
+      "type": "Channel"
     },
     {
       "type": "Sub-Channel",
-      "parent": "Channel",
-      "multi": false
+      "parent": "Channel"
     }
   ],
   "filterDefaults": {

@@ -15,4 +15,4 @@
 </style>
 
 <NavBar/>
-<Filters/>
+<Filters class="test"/>

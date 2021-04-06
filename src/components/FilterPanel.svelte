@@ -4,9 +4,31 @@
   import FilterCatcher from "./FilterCatcher.svelte";
   import FilterSection from "./FilterSection.svelte";
   export let visible;
-  export let crumbs;
   export let currentFilters = [];
+  
+  let changingFilters = [];
+
+  onMount(() => {
+    changingFilters = currentFilters;
+  });
+
   $: console.log("FilterPanel/currentFilters", currentFilters);
+
+  const applyHandler = (event) => {
+    console.log('FilterPanel/applyHandler',event);
+    currentFilters = changingFilters;
+    visible = false;
+  };
+
+  const cancelHandler = (event) => {
+    console.log('FilterPanel/cancelHandler',event);
+    changingFilters = currentFilters;
+    visible = false;
+  }
+
+  const clearHandler = (event) => {
+    changingFilters = [];
+  }
 
 let channelsFilterDefinition = null;
 let geographyFilterDefinition = null;
@@ -34,11 +56,11 @@ onMount(() => {
 </style>
 
 <div style="display:{visible?'flex':'none'}">
-  <FilterCatcher bind:currentFilters />
+  <FilterCatcher bind:currentFilters={changingFilters} on:apply={applyHandler} on:clear={clearHandler} on:cancel={cancelHandler} />
   {#if channelsFilterDefinition}
-  <FilterSection definition={channelsFilterDefinition} bind:currentFilters />
+  <FilterSection definition={channelsFilterDefinition} bind:currentFilters={changingFilters} />
   {/if}
   {#if geographyFilterDefinition}
-  <FilterSection definition={geographyFilterDefinition} bind:currentFilters />
+  <FilterSection definition={geographyFilterDefinition} bind:currentFilters={changingFilters} />
   {/if}
 </div>

@@ -1,5 +1,4 @@
 <script>
-
   import {appRoot} from '../appRoot';
 </script>
 <style>
