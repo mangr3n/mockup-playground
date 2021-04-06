@@ -163,7 +163,7 @@ div.options {
         <strong>Generic, Username</strong> <br/>
         ugeneric@businessonetech.com
       </div>
-      <a href="#logout">Logout</a>
+      <a href="Auth.aspx?logout=true">Logout</a>
     </div>
   </div>
 </div>
