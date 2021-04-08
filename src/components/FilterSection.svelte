@@ -97,7 +97,7 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
 
   .radio {
     @apply absolute top-0 left-0 h-5 w-5 border-solid border-2 border-gray-200 rounded-full;
-    Padding-top: 0;
+    margin-top: 0;
   }
 
   .container:hover input ~ .checkmark {
