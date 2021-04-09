@@ -37,8 +37,8 @@
       "type": "Sub-Channel"
     }
   },
-  "sections": [
-    {
+  "sections": {
+    "Channel": {
       "name": "Channel",
       "filters": [
         {
@@ -77,7 +77,7 @@
         }
       ]
     },
-    {
+    "Sub-Channel": {
       "name": "Sub-Channel",
       "filters": [
         {
@@ -159,5 +159,5 @@
         }
       ]
     }
-  ]
+  }
 }

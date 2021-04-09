@@ -8,4 +8,4 @@ export let filter = null;
   }
 </style>
 
-<span title={filter.title}>{filter.name}</span>
+<span title="{filter.title}: {filter.id}">{filter.name}</span>

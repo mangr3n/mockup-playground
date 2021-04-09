@@ -1,5 +1,8 @@
 <script>
   import {appRoot} from '../appRoot';
+
+  let username = (window.ovCompSettings && ovCompSettings[0].UserName) || 'Generic, Username'; 
+  let email = (window.ovCompSettings && ovCompSettings[0].UserEmail) || 'ugeneric@businessonetech.com';
 </script>
 <style>
 nav {
@@ -159,8 +162,8 @@ div.options {
       <i class="fas fa-user fa-lg user-menu"></i>
     <div class="dropdown-content user">
       <div class="user-info">
-        <strong>Generic, Username</strong> <br/>
-        ugeneric@businessonetech.com
+        <strong>{username}</strong> <br/>
+        {email}
       </div>
       <a href="Auth.aspx?logout=true">Logout</a>
     </div>

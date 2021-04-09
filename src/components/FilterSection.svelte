@@ -18,11 +18,9 @@ const shouldShow = (filter,currentFilters) => {
   if (isShowing(filter.parent, currentFilters)) return true;
   
   // Get my Type
-  const myFilteredTypes =  definition.filterTypes.filter(item => {
-    return filter.type == item.type;
-  });
+  const myFilteredTypes =  definition.types[filter.type];
   // Find my Type'sParentType
-  const parentType = myFilteredTypes[0].parent;
+  const parentType = myFilteredTypes.parent;
 
   // If no other filter of my parent's type is showing, then draw me.  
   // ("All Channels" means "All-Subchannels")
@@ -166,7 +164,7 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
     <!-- Added margin to top of filters so title doesn't appear over the filters -->
     <div class="filters-margin">
 
-    {#each definition.sections as section}
+    {#each Object.values(definition.sections) as section}
 
     <!-- Filter Buttons Section -->
     <div class="filter-buttons-section">
@@ -181,7 +179,11 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
         {#each section.filters as filter}
           {#if !filter.default && shouldShow(filter,currentFilters)}
           <label class="container" title={filter.title}> {filter.name}
-            <input type="checkbox" checked={isShowing(filter.id, currentFilters)} on:input={(value) => currentFilters = toggleFilter(filter,currentFilters, value, definition.multiselect[filter.type] )}/>
+            <input 
+              type="checkbox" 
+              checked={isShowing(filter.id, currentFilters)}
+              data-id={filter.id}
+              on:input={(value) => currentFilters = toggleFilter(filter,currentFilters, value, definition.types[filter.type].multiselect )}/>
             <span class= "radio" />
           </label>
           {/if}
