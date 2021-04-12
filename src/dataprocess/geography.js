@@ -40,7 +40,7 @@ export const processGeographyData = (jsonGeographyData, jsonStateData) => {
     if (jsonGeographyData) {
         result.sections['Geography-Type'].filters = jsonGeographyData.map(item => {
             const { GeoTypeName, GeoTypeId } = item;
-            return { id: GeoTypeId, name: "Geography Type", title: `Geography Type: ${GeoTypeName}`, default: false, type: 'Geography-Type'};
+            return { id: GeoTypeId, name: GeoTypeName, title: `Geography Type: ${GeoTypeName}`, default: false, type: 'Geography-Type'};
         });
     }
     if (jsonStateData) {
