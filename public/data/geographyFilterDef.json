@@ -2,7 +2,7 @@
   "name": "Geography",
   "multiselect": {
     "Geography-Type": false,
-    "State": true,
+    "State": false,
     "CBSA": false
   },
   "types": {
