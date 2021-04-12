@@ -5,20 +5,32 @@
     "State": true,
     "CBSA": false
   },
+  "types": {
+    "Geography-Type": {
+      "multiselect": false,
+      "parent": null
+    },
+    "State": {
+      "multiselect": false,
+      "parent": "Geography-Type"
+    },
+    "CBSA": {
+      "multiselect": false,
+      "parent": "Geography-Type"
+    }
+
+  },
   "filterTypes": [
     {
-      "type": "Geography-Type",
-      "multi": false
+      "type": "Geography-Type"
     },
     {
       "type": "State",
-      "parent": "Geography-Type",
-      "multi": false
+      "parent": "Geography-Type"
     },
     {
       "type": "CBSA",
-      "parent": "Geography-Type",
-      "multi": false
+      "parent": "Geography-Type"
     }
   ],
   "filterDefaults": {

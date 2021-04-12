@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { appRoot } from "../appRoot";
   import { processChannelData } from "../dataprocess/channels";
+  import { processGeographyData } from "../dataprocess/geography";
   import FilterCatcher from "./FilterCatcher.svelte";
   import FilterSection from "./FilterSection.svelte";
   export let visible;
@@ -47,11 +48,21 @@
           channelsFilterDefinition = json;
         });
     }
+  });
+
+  onMount(() => {
+    if (window.jsonGeography && window.jsonState) {
+      geographyFilterDefinition = processGeographyData(
+        jsonGeography,
+        jsonState
+      );
+    } else {
     fetch($appRoot + "/data/geographyFilterDef.json")
         .then((r) => r.json())
         .then((json) => {
           geographyFilterDefinition = json;
         });
+      }
   });
 </script>
 
