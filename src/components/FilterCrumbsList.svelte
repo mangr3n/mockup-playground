@@ -12,7 +12,10 @@ export let currentFilters = [
   }
 </style>
 <div class="crumbFilterList">
-  {#each currentFilters as filter }
-    <FilterCrumb {filter}/> /
+  {#each currentFilters as filter, index }
+    &nbsp;<FilterCrumb {filter}/>&nbsp;
+    {#if (currentFilters.length - 1) > index}
+    &bull;
+    {/if}
   {/each}
 </div>
