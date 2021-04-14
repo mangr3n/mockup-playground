@@ -3,6 +3,7 @@
   import { appRoot } from "../appRoot";
   import { processChannelData } from "../dataprocess/channels";
   import { processGeographyData } from "../dataprocess/geography";
+  import { processMarketData } from "../dataprocess/MarketBasket"
   import FilterCatcher from "./FilterCatcher.svelte";
   import FilterSection from "./FilterSection.svelte";
   export let visible;
@@ -48,6 +49,14 @@
           channelsFilterDefinition = json;
         });
     }
+  });
+
+  onMount(() => {
+    if (window.jsonMarket) {
+      marketFilterDefinition = processMarketData(
+        jsonMarket
+      );
+    } 
   });
 
   onMount(() => {
