@@ -170,9 +170,11 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
     <div class="filter-buttons-section">
 
       <!-- Sub Title (if needed) -->
+      {#if section.name}
       <div class="filter-subtitle">
         <span>{section.name}</span>
       </div>
+      {/if}
 
 
       {#if currentFilters !== null}

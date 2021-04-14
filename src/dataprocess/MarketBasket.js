@@ -17,7 +17,6 @@ export const processMarketData = (jsonMarketData) => {
         },
         sections: {
             "Market": {
-                name: "Market",
                 filters: [],
             }
         }

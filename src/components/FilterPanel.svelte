@@ -3,7 +3,7 @@
   import { appRoot } from "../appRoot";
   import { processChannelData } from "../dataprocess/channels";
   import { processGeographyData } from "../dataprocess/geography";
-  import { processMarketData } from "../dataprocess/MarketBasket"
+  import { processMarketData } from "../dataprocess/MarketBasket";
   import FilterCatcher from "./FilterCatcher.svelte";
   import FilterSection from "./FilterSection.svelte";
   export let visible;
@@ -35,6 +35,7 @@
 
   let channelsFilterDefinition = null;
   let geographyFilterDefinition = null;
+  let marketFilterDefinition = null;
 
   onMount(() => {
     if (window.jsonChannel && window.jsonSubChannel) {
@@ -91,6 +92,12 @@
   {#if geographyFilterDefinition}
     <FilterSection
       definition={geographyFilterDefinition}
+      bind:currentFilters={changingFilters}
+    />
+  {/if}
+  {#if marketFilterDefinition}
+  <FilterSection
+      definition={marketFilterDefinition}
       bind:currentFilters={changingFilters}
     />
   {/if}
