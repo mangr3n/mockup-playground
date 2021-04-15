@@ -7,8 +7,9 @@ export let currentFilters = [
 <style>
   .crumbFilterList {
     @apply text-base;
-    @apply text-white flex justify-center items-center;
+    @apply text-white inline-block self-end justify-center items-center;
     @apply px-8;
+    @apply leading-9;
   }
 </style>
 <div class="crumbFilterList">

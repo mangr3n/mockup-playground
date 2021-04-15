@@ -9,11 +9,12 @@
 
 <style>
     .show-filters-visible {
-        @apply text-lightBlue-500;
+        @apply text-cyan-600;
         @apply bg-white;
     }
     .show-filters-not-visible {
-        @apply text-white;        
+        @apply text-white; 
+        background-color: #265873;      
     }
 
     .show-filters {
@@ -26,7 +27,7 @@
     }
 
     .icon-filter-visible {
-        @apply text-lightBlue-500;
+        @apply text-cyan-600;
     }
     .icon-filter-not-visible {
         @apply text-white;

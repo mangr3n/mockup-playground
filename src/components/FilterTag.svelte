@@ -15,11 +15,11 @@ $:console.log("FilterTag/filter", filter);
 
 <style>
   .filter-tag {
-    @apply border-solid border-2 border-gray-700 py-0 px-1.5 p-2 m-1 text-xs select-none;
+    @apply border-solid border-2 border-gray-700 py-0 px-2 m-1 text-base select-none;
   }
 
   .close-tag {
-    @apply cursor-pointer pl-0.5 pr-0.5 text-sm font-medium;
+    @apply cursor-pointer pl-0.5 pr-0.5 text-base font-medium;
   }
 
   .close-tag:hover{

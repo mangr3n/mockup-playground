@@ -107,11 +107,11 @@ $: console.log("FilterChannels/currentFilters: ",currentFilters);
   }
 
   .container input:checked ~ .checkmark {
-    @apply bg-blue-400;
+    background-color: #2896d2;
   }
 
   .container input:checked ~ .radio {
-    @apply bg-blue-400;
+    background-color: #2896d2;
   }
 
   /* create the checkmark (hidden) */

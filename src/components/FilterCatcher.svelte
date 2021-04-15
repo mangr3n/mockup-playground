@@ -36,8 +36,8 @@
     {#each currentFilters as filter, name}
       <FilterTag {filter} on:removeFilter={removeFilter} />
     {/each}
-    <span class="clear-filters" on:click={() => dispatch('clear',null)}>Clear All</span>
   </div>
+  <span class="clear-filters" on:click={() => dispatch('clear',null)}>Clear All</span>
 </div>
 
 <style>
@@ -59,19 +59,22 @@
   }
 
   .button-cancel {
-    @apply bg-coolGray-300 text-black py-2 px-4 rounded flex-1 mx-2;
+    @apply bg-warmGray-300 text-black py-2 px-4 rounded flex-1 mx-2;
+    box-shadow: 3px 3px 5px -2px #757575;
   }
 
   .button-cancel:hover {
-    @apply bg-coolGray-400;
+    @apply bg-warmGray-400;
   }
 
   .button-apply {
-    @apply bg-blue-400 text-white py-2 px-4 rounded flex-1 mx-2;
+    @apply text-white py-2 px-4 rounded flex-1 mx-2;
+    box-shadow: 3px 3px 5px -2px #757575;
+    background-color: #2896d2;
   }
 
   .button-apply:hover {
-    @apply bg-blue-500;
+    background-color: #236a90;
   }
 
   .clear-filters {
